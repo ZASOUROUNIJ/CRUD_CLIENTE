@@ -8,8 +8,15 @@
  
 		<p:menubar>
 			<p:menuitem value="Home" icon="ui-icon-home" url="home.xhtml" />
-			<p:menuitem value="Cadastrar cliente" icon="ui-icon-document" url="cadastrarCliente.xhtml" />
-			<p:menuitem value="Consultar clientes" icon="ui-icon-document" url="consultarCliente.xhtml"/>
+			<p:submenu label="Clientes" icon="ui-icon-document">
+                <p:menuitem value="Cadastrar cliente" icon="ui-icon-document" url="cadastrarCliente.xhtml" />
+				<p:menuitem value="Consultar clientes" icon="ui-icon-document" url="consultarCliente.xhtml"/>
+        	</p:submenu>
+        	<p:submenu label="Produtos" icon="ui-icon-document">
+				<p:menuitem value="Cadastrar produtos" icon="ui-icon-document" url="cadastrarSalgado.xhtml"/>
+				<p:menuitem value="Consultar produtos" icon="ui-icon-document" url="consultarSalgado.xhtml"/>
+			</p:submenu>
+			
  
  
 		<f:facet name="options">

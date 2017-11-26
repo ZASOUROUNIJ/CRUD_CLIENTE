@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+ 
+<h:head>
+</h:head>
+ 
+<ui:composition template="/template/layoutBase.xhtml">
+ 
+	<ui:define name="content">
+ 		<p:dialog header="Editar cadastro de salgado" 
+				  id="dialog-modal-editar" 
+		   		  widgetVar="dialog-modal-editar" 
+		   		  modal="true" 
+		   		  height="400px"
+		   		  width="550px">
+ 
+    		 <ui:include src="/sistema/editarSalgado.xhtml"/>
+		</p:dialog>
+		
+		<h:form style="margin:auto;margin-left:2%;" id="form-consulta">
+ 
+			<p:dataTable id="dataTable-registros"
+						 var="salgado" 
+						 value="#{consultarSalgadoController.salgados}" 
+						 rows="15"
+						 paginator="true"
+						 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15"
+                         style="width:98%;">
+ 
+						 <p:column headerText="Id">
+            				<h:outputText value="#{salgado.codigo}" />
+        				 </p:column>
+ 						 
+ 						 <p:column headerText="Nome">
+            				<h:outputText value="#{salgado.nome}" />
+        				 </p:column>
+        				 
+        				 <p:column headerText="Tipo">
+            				<h:outputText value="#{salgado.tipo}" />
+        				 </p:column>
+ 
+        				 <p:column headerText="Usuário">
+            				<h:outputText value="#{salgado.usuarioModel.usuario}" />
+        				 </p:column>
+ 
+        				 <p:column headerText="" style="width:25px;">
+ 							<p:commandButton icon="ui-icon-pencil" 
+        				    				    title="Editar Registro"                        					 
+                        					    ajax="true"                        					 
+                        					    actionListener="#{consultarSalgadoController.Editar(salgado)}"
+                        					    oncomplete="PF('dialog-modal-editar').show();" 
+                        					    update="dialog-modal-editar"/>
+        				 </p:column>
+ 
+        				 <p:column headerText="" style="width:25px;">
+ 							<p:commandButton icon="ui-icon-trash" 
+        				    		     title="Excluir Registro"                        					 
+                        					 ajax="true"
+                        					 actionListener="#{consultarSalgadoController.ExcluirSalgado(salgado)}"
+                        					 update="@form" />
+        				 </p:column>
+ 
+			</p:dataTable>
+ 
+		</h:form>
+ 
+	</ui:define>
+ 
+</ui:composition>
+</html>
