@@ -15,7 +15,7 @@
 				style="width:50px" readonly="true" />
 
 			<p:outputLabel value="Cpf" for="inputText-nome" />
-			<p:inputText id="inputText-cpf" style="width:300px" maxlength="70"
+			<p:inputMask mask="999.999.999-99" id="inputText-cpf" style="width:300px" maxlength="70"
 				value="#{consultarClienteController.clienteModel.cpf}"
 				required="true"
 				requiredMessage="O cpf é de preenchimento obrigatório" />
@@ -32,8 +32,8 @@
 				required="true"
 				requiredMessage="O login é de preenchimento obrigatório" />
 
-			<p:outputLabel value="Senha" for="inputText-senha" />
-			<p:inputText id="inputText-senha" style="width:300px" maxlength="70"
+			<p:outputLabel value="Senha" for="password-usuario" />
+			<p:password id="password-usuario"  style="width:300px" maxlength="70"
 				value="#{consultarClienteController.clienteModel.senha}"
 				required="true"
 				requiredMessage="A senha é de preenchimento obrigatório" />
@@ -46,7 +46,8 @@
 				requiredMessage="O endereço é de preenchimento obrigatório" />
 				
 			<p:outputLabel value="Telefone" for="inputText-telefone" />
-			<p:inputText id="inputText-telefone" style="width:300px"
+			<p:inputMask mask="(99) 9 9999-9999" id="inputText-telefone" 
+			 	style="width:300px"
 				maxlength="50"
 				value="#{consultarClienteController.clienteModel.telefone}"
 				required="true"
